@@ -39,8 +39,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Name my pet</h3>
+        <img src="/Rorschach1.jpg" />
+        <h3>Test de Rorschach</h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"

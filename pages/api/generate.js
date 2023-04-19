@@ -27,9 +27,10 @@ export default async function (req, res) {
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "text-davinci-003", //Este modelo es el mas actualizado que permite un mejor comprendimiento del texto en la aplicación de CHAT GPT.
       prompt: generatePrompt(animal),
       temperature: 0.6,
+      max_tokens:4000,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
@@ -47,10 +48,13 @@ export default async function (req, res) {
     }
   }
 }
-
+//Esta función permite enviar la petición a CHATGPT
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+  return `Segun el test de Rorschach la imagen 1 se interpreta como ${capitalizedAnimal} ¿Qué se podria interpretar de la persona?`
+
+/*
   return `Suggest three names for an animal that is a superhero.
 
 Animal: Cat
@@ -59,4 +63,5 @@ Animal: Dog
 Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
 Animal: ${capitalizedAnimal}
 Names:`;
+*/
 }
